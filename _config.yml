@@ -1,0 +1,24 @@
+title: "Chhandak Roy"
+description: "VLSI • RTL Design • FPGA • ASIC — Projects, experiments and practical notes from RTL to implementation."
+url: "https://chhandakroy.github.io"
+baseurl: ""
+author:
+  name: "Chhandak Roy"
+  github: "ChhandakRoy"
+markdown: kramdown
+highlighter: rouge
+collections:
+  projects:
+    output: true
+    permalink: /projects/:name/
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+  - scope:
+      path: ""
+      type: projects
+    values:
+      layout: project
