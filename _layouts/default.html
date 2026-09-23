@@ -7,14 +7,75 @@
   <meta name="description" content="{{ page.description | default: site.description }}">
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
+
 <body>
-<header class="site-header"><div class="wrap nav">
-  <a class="brand" href="{{ '/' | relative_url }}"><span class="brand-mark">CR</span><span>Chhandak Roy</span></a>
-  <nav aria-label="Primary">
-    <a href="{{ '/' | relative_url }}">Home</a><a href="{{ '/projects/' | relative_url }}">Projects</a><a href="{{ '/blog/' | relative_url }}">Blog</a><a href="{{ '/about/' | relative_url }}">About</a>
-    <a href="https://github.com/ChhandakRoy" target="_blank" rel="noreferrer">GitHub ↗</a>
-  </nav>
-</div></header>
-<main>{{ content }}</main>
-<footer class="site-footer"><div class="wrap footer-grid"><div><strong>Chhandak Roy</strong><p>VLSI • RTL Design • FPGA • ASIC</p></div><div class="footer-links"><a href="https://github.com/ChhandakRoy" target="_blank" rel="noreferrer">GitHub</a></div></div><div class="wrap footer-bottom">Built with GitHub Pages + Jekyll.</div></footer>
-</body></html>
+
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="brand" href="{{ '/' | relative_url }}">
+      <span class="brand-mark">CR</span>
+      <span>Chhandak Roy</span>
+    </a>
+
+    <nav aria-label="Primary">
+      <a href="{{ '/' | relative_url }}">Home</a>
+      <a href="{{ '/projects/' | relative_url }}">Projects</a>
+      <a href="{{ '/blog/' | relative_url }}">Blog</a>
+      <a href="{{ '/about/' | relative_url }}">About</a>
+      <a href="https://github.com/ChhandakRoy" target="_blank" rel="noreferrer">GitHub ↗</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  {{ content }}
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <strong>Chhandak Roy</strong>
+      <p>VLSI · RTL Design · Verification · FPGA · ASIC</p>
+    </div>
+
+    <div class="footer-links">
+      <a href="https://github.com/ChhandakRoy" target="_blank" rel="noreferrer">GitHub</a>
+    </div>
+  </div>
+
+  <div class="wrap footer-bottom">
+    Built with GitHub Pages + Jekyll.
+  </div>
+</footer>
+
+<!-- Mermaid support -->
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@12/dist/mermaid.esm.min.mjs';
+
+  mermaid.initialize({
+    startOnLoad: false,
+    theme: 'dark',
+    securityLevel: 'loose'
+  });
+
+  document.addEventListener('DOMContentLoaded', async () => {
+    document
+      .querySelectorAll('pre code.language-mermaid')
+      .forEach((code) => {
+        const pre = code.parentElement;
+        pre.classList.add('mermaid');
+        pre.textContent = code.textContent;
+      });
+
+    const diagrams = document.querySelectorAll('pre.mermaid');
+
+    if (diagrams.length > 0) {
+      await mermaid.run({
+        nodes: diagrams
+      });
+    }
+  });
+</script>
+
+</body>
+</html>
