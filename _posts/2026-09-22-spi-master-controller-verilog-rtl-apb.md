@@ -3,9 +3,9 @@
 layout: post
 title: "How to Design an SPI Master Controller in Verilog RTL: APB, Timing, Simulation and Synthesis"
 description: "Learn how to design an SPI Master Controller in synthesizable Verilog RTL, integrate APB, implement SPI timing, verify the design, debug synthesis warnings, and analyze timing, area and power."
-date: 2026-09-22 18:00:00 +0530
+date: 2026-09-23 18:00:00 +0530
 permalink: /blog/spi-master-controller-verilog-rtl-apb/
-published: false
+published: true
 categories:
 
 * VLSI
