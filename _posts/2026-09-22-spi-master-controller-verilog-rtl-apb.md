@@ -295,7 +295,7 @@ The processor does not have to manually control individual SCLK edges. It config
 The controller is intentionally split into functional blocks instead of placing the entire protocol into one large RTL module.
 
 <figure>
-  <img src="{{ '/assets/images/spi-master-controller/Architecture.png' | relative_url }}" alt="System architecture of the SPI controller" style="max-width:100%;height:auto;">
+  <img src="{{ '/assets/images/spi-master-controller/SPI_synthesized_netlist.png' | relative_url }}" alt="System architecture of the SPI controller" style="max-width:100%;height:auto;">
   <figcaption><strong>Figure 7:</strong> System architecture of the complete SPI master controller.</figcaption>
 </figure>
 
@@ -314,9 +314,7 @@ This separation also makes it easier to inspect each block independently in simu
 
 ---
 
-## 7. Designing `APB_SLAVE_INTERFACE.v`
-
-### Responsibility
+## 7. Designing `APB SLAVE INTERFACE`
 
 This module acts as the software-facing control block between the APB transaction interface and the SPI datapath.
 
@@ -325,35 +323,61 @@ This module acts as the software-facing control block between the APB transactio
   <figcaption><strong>Figure 8:</strong> APB slave interface block.</figcaption>
 </figure>
 
-### Main responsibilities
+### Behavioral functionalities :
 
 - Detect APB `IDLE`, `SETUP` and `ENABLE` phases
 - Generate `PREADY_O`
 - Generate the implemented `PSLVERR_O` condition
 - Decode register addresses
-- Handle register writes and reads
-- Store SPI configuration
-- Provide transmit data
-- Capture received data
-- Generate status and interrupt information
+- Handle register write and read operations
+- Run SPI FSM and Store SPI configuration
+- Provide transmit data to Shift register block
+- Capture received data from Shift register block
+- Generate status and interrupt information for the processor
 
-### Register decoding
+### Understanding the Behavioral Simulation
 
-The register addresses are decoded as follows:
+<figure>
+  <img src="{{ '/assets/images/spi-master-controller/apb_sim.png' | relative_url }}" 
+       alt="APB Slave behavioral simulation" style="max-width:100%;height:auto;">
+  <figcaption><strong>Figure 9:</strong> APB register read and write transactions.</figcaption>
+</figure>
 
-```text
-CR1     -> 0
-CR2     -> 1
-BR      -> 2
-STATUS  -> 3
-DR      -> 5
-```
+The behavioral simulation lets us follow how an APB transaction is converted into configuration and data inside the SPI controller.
 
-The configuration fields include `MSTR`, `CPOL`, `CPHA`, `LSBFE`, `SPISWAI`, `SPR` and `SPPR`, along with the implemented interrupt-related fields.
+The important sequence is:
 
-### TX/RX path
+- **APB writes the SPI configuration registers one by one.**  
+  The processor first writes the required control and baud-rate settings through the APB interface.
 
-The high-level data path is:
+- **The transmit data register is written with `178`.**  
+  In the simulation, the APB master writes `178` (`10110010`) to the Data Register address (`PADDR_I = 5`).
+
+- **Transmit data and receive data are handled separately internally.**  
+  Although they are accessed through the same APB Data Register address, the implementation uses separate internal registers: `tx_data_reg` for transmitted data and `rx_data_reg` for received data. The former is written by the APB interface, while the latter is updated after an SPI transfer.
+
+- **Writing `tx_data_reg` clears `SPTEF` and sets `dr_pending`.**  
+  `SPTEF` indicates that the transmit data register is empty. Once the processor writes new data, `SPTEF` becomes `0`, while `dr_pending` becomes `1`. This tells the controller that new transmit data is waiting to be transferred.
+
+- **The controller waits until the SPI datapath is ready to accept the new data.**  
+  When the APB interface is no longer writing the transmit register and `SS_I` is high (meaning that no SPI transfer is currently active), the controller generates the `SEND_DATA_O` pulse.
+
+- **The transmit data is then passed to the Shift Register block.**  
+  During this transfer handoff, `tx_data_reg` is presented through `MOSI_DATA_O`, while `SEND_DATA_O` indicates that the Shift Register should load the new transmit data.
+
+- **The actual serial transmission happens inside the Shift Register block.**  
+  At this point, the APB interface has finished its job. The Shift Register takes the parallel transmit data and converts it into the serial SPI stream.
+
+- **The receive path works in the opposite direction.**  
+  After the SPI transfer completes, the data captured by the Shift Register is transferred into `rx_data_reg`.
+
+- **In the shown simulation, `rx_data_reg` becomes `109`.**  
+  The received value is then available to the APB interface for software to read.
+
+- **Finally, the APB master reads the Data Register.**  
+  At the highlighted point in the waveform, `PADDR_I = 5` and `PRDATA_O = 109`, showing that the received SPI data has been successfully returned through the APB interface.
+
+At this stage, we have only followed the **control and data handoff** between APB and the SPI datapath. The exact process of loading the transmit data, shifting individual bits, sampling `MISO`, and constructing the received value will become much clearer when we examine the **`SPI_SHIFT_REGISTER`** block in the next section. The high-level data path is:
 
 ```text
 APB write DR
@@ -382,6 +406,12 @@ A data-register write creates pending transmit activity. Once the SPI control lo
 
 The baud generator creates the SPI clock from `PCLK`.
 
+<figure>
+  <img src="{{ '/assets/images/spi-master-controller/Baud_gen.png' | relative_url }}" alt="Baud Generator block" style="max-width:100%;height:auto;">
+  <figcaption><strong>Figure 10:</strong> Baud Generator interface.</figcaption>
+</figure>
+
+
 The current RTL calculates:
 
 ```text
@@ -409,7 +439,7 @@ The baud generator:
 
 <figure>
   <img src="{{ '/assets/images/spi-master-controller/Baud_gen.png' | relative_url }}" alt="SPI baud generator architecture" style="max-width:100%;height:auto;">
-  <figcaption><strong>Figure 9:</strong> Baud generator architecture and timing outputs.</figcaption>
+  <figcaption><strong>Figure 9:</strong> Baud generator architecture and timing.</figcaption>
 </figure>
 
 The clock generator and shift register therefore remain synchronized through the generated timing events rather than requiring the shift register to independently derive the SPI clock.
@@ -418,7 +448,13 @@ The clock generator and shift register therefore remain synchronized through the
 
 ## 9. Designing `SPI_SHIFT_REGISTER.v`
 
-The shift register is the serial datapath.
+The shift register is the serial datapath, solely responsible for Sending and Receiving data bit by bit.
+
+<figure>
+  <img src="{{ '/assets/images/spi-master-controller/Shift_reg.png' | relative_url }}" alt="Shift register block" style="max-width:100%;height:auto;">
+  <figcaption><strong>Figure 8:</strong> APB slave interface block.</figcaption>
+</figure>
+
 
 ### Transmit path
 
