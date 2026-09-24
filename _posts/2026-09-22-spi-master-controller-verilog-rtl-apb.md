@@ -50,7 +50,7 @@ The final controller is organized into four functional RTL blocks plus a top-lev
 **Current implementation:** `WIDTH = 8`
 
 <figure>
-  <img src="{{ '/assets/images/spi-master-controller/Architecture.png' | relative_url }}" alt="SPI_TOP microarchitecture" style="max-width:100%;height:auto;">
+  <img src="{{ '/assets/images/spi-master-controller/Architecture.png' | relative_url }}" alt="SPI_TOP microarchitecture" style="max-width:95%;height:auto;">
   <figcaption><strong>Figure 1:</strong> SPI_TOP microarchitecture.</figcaption>
 </figure>
 
@@ -97,7 +97,7 @@ SPI intentionally keeps the interface simple. It normally uses a clock, one line
 | `SS/CS` | Output | Selects the target slave |
 
 <figure>
-  <img src="{{ '/assets/images/spi-master-controller/master_slave.png' | relative_url }}" alt="SPI master and slave communication" style="max-width:100%;height:auto;">
+  <img src="{{ '/assets/images/spi-master-controller/master_slave.png' | relative_url }}" alt="SPI master and slave communication" style="max-width:80%;height:auto;">
   <figcaption><strong>Figure 2:</strong> SPI master and slave communication.</figcaption>
 </figure>
 
@@ -228,14 +228,14 @@ You do not need the entire APB specification to understand this project. These s
 Together, these signals define the software-facing transaction side of the controller.
 
 <figure>
-  <img src="{{ '/assets/images/spi-master-controller/apb_writing.png' | relative_url }}" alt="APB write transaction" style="max-width:100%;height:auto;">
+  <img src="{{ '/assets/images/spi-master-controller/apb_writing.png' | relative_url }}" alt="APB write transaction" style="max-width:50%;height:auto;">
   <figcaption><strong>Figure 4:</strong> APB write transaction used to access the SPI controller.</figcaption>
 </figure>
 
 ### APB state machine
 
 <figure>
-  <img src="{{ '/assets/images/spi-master-controller/apb_fsm.png' | relative_url }}" alt="APB state machine" style="max-width:60%;height:auto;">
+  <img src="{{ '/assets/images/spi-master-controller/apb_fsm.png' | relative_url }}" alt="APB state machine" style="max-width:50%;height:auto;">
   <figcaption><strong>Figure 5:</strong> APB FSM showing the transfer phases.</figcaption>
 </figure>
 
