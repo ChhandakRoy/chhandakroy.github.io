@@ -532,7 +532,13 @@ The Baud Generator therefore forms the timing bridge between the system clock an
 
 The next question is: **what does the Shift Register actually do with these timing events?**
 
-That is where the parallel transmit data (`178` in our example) is converted into serial `MOSI` bits, while incoming `MISO` bits are sampled and reconstructed into the received value.
+<div class="section-transition">
+
+<strong>The datapath now moves from timing to data.</strong><br>
+The parallel transmit data (`178` in our example) is converted into serial `MOSI` bits, while incoming `MISO` bits are sampled and reconstructed into the received value (`109` in our example).
+
+</div>
+
 ---
 
 ## 9. Designing `SPI_SHIFT_REGISTER`

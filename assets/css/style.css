@@ -940,3 +940,20 @@ pre {
     animation: none !important;
   }
 }
+
+.section-transition {
+  margin: 2.5rem 0 2rem;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--accent);
+  background: rgba(0, 200, 255, 0.035);
+  border-radius: 0 8px 8px 0;
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+.section-transition strong {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 1.05rem;
+  color: var(--text);
+}
