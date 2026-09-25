@@ -682,7 +682,7 @@ This simultaneous transmit-and-receive operation is the key characteristic of **
 ### Understanding the Behavioral Simulation
 
 <figure>
-  <img src="{{ '/assets/images/spi-master-controller/Shift_sim.png' | relative_url }}" alt="SPI Shift Register behavioral simulation" style="max-width:100%;height:auto;">
+  <img src="{{ '/assets/images/spi-master-controller/shift_sim.png' | relative_url }}" alt="SPI Shift Register behavioral simulation" style="max-width:100%;height:auto;">
   <figcaption><strong>Figure 12:</strong> SPI Shift Register behavioral simulation. Magenta highlights the transmit activity, while cyan highlights the receive activity.</figcaption>
 </figure>
 
