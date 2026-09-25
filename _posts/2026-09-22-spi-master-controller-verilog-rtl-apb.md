@@ -828,8 +828,7 @@ WIDTH           = 8
 the resulting transfer count is:
 
 ```text
-MAX = 8 × 8
-    = 64 PCLK cycles
+MAX = 8 × 8 = 64 PCLK cycles
 ```
 
 This corresponds to an eight-bit SPI frame, because one complete SCLK period occupies eight `PCLK` cycles.
