@@ -1,57 +1,83 @@
 ---
 layout: default
-title: "Projects & Writing"
-description: "Selected VLSI, RTL design, verification and digital hardware projects by Chhandak Roy."
+title: "Home"
+description: "Chhandak Roy — VLSI and RTL design engineer working on digital hardware, verification, FPGA architectures and ASIC implementation."
 ---
 
-<section class="projects-hero wrap">
-  <p class="eyebrow">SELECTED WORK</p>
+<section class="hero wrap">
+  <div class="hero-copy">
+    <p class="eyebrow">
+      VLSI • RTL DESIGN • VERIFICATION • FPGA • ASIC
+    </p>
 
-  <h1>Projects &amp; Writing</h1>
+    <h1>
+      Designing and<br>
+      Verifying Hardware.
+    </h1>
 
-  <p class="projects-intro">
-    Digital hardware projects, RTL implementations, verification work and
-    technical notes documenting how the designs are built and analyzed.
-  </p>
+    <p class="hero-credential">
+      M.Tech. in VLSI and Nanoelectronics
+      <span>·</span>
+      IIT Guwahati
+    </p>
+
+    <p class="hero-text">
+      I’m Chhandak Roy, a RTL design and Verification engineer focused on
+      digital hardware, verification, FPGA architectures and ASIC implementation.
+      I document the engineering decisions, debugging and implementation results
+      behind the designs I build.
+    </p>
+
+    <div class="hero-actions">
+      <a class="button" href="{{ '/projects/' | relative_url }}">
+        Projects &amp; Writing
+      </a>
+
+      <a class="button secondary" href="{{ '/blog/' | relative_url }}">
+        Technical Blog
+      </a>
+    </div>
+  </div>
 </section>
 
-
-<section class="wrap section project-showcase-section">
-
+<section class="wrap section">
   <div class="section-heading">
     <div>
       <p class="eyebrow">FEATURED PROJECT</p>
       <h2>APB-Based SPI Master Controller</h2>
     </div>
+
+    <a href="{{ '/projects/' | relative_url }}">
+      Projects &amp; Writing →
+    </a>
   </div>
 
-  <article class="project-showcase">
-
-    <a
-      class="project-showcase-image"
-      href="{{ '/projects/apb-spi-master-controller/' | relative_url }}"
+  <a
+    class="project-card featured"
+    href="{{ '/projects/apb-spi-master-controller/' | relative_url }}"
+  >
+    <img
+      class="project-thumbnail"
+      src="{{ '/assets/images/spi-master-controller/Architecture.png' | relative_url }}"
+      alt="Architecture of the APB-based SPI Master Controller"
+      loading="lazy"
     >
-      <img
-        src="{{ '/assets/images/spi-master-controller/Architecture.png' | relative_url }}"
-        alt="Architecture of the APB-Based SPI Master Controller"
-      >
-    </a>
 
-    <div class="project-showcase-body">
+    <div class="project-card-body">
 
-      <p class="card-label">
+      <div class="card-label">
         DIGITAL DESIGN · VERILOG RTL
-      </p>
+      </div>
 
       <h3>APB-Based SPI Master Controller</h3>
 
-      <p class="project-showcase-description">
+      <p>
         A parameterized APB-controlled SPI master implemented in synthesizable
         Verilog RTL and taken through simulation, RTL design checks, synthesis,
         timing, area and power analysis.
       </p>
 
-      <div class="project-meta">
+      <div class="tags">
         <span>Verilog</span>
         <span>APB</span>
         <span>SPI</span>
@@ -60,97 +86,98 @@ description: "Selected VLSI, RTL design, verification and digital hardware proje
         <span>Design Compiler</span>
       </div>
 
-      <div class="project-showcase-links">
-        <a
-          class="button"
-          href="{{ '/projects/apb-spi-master-controller/' | relative_url }}"
-        >
-          Explore project →
-        </a>
-
-        <a
-          class="text-link"
-          href="{{ '/blog/spi-master-controller-verilog-rtl-apb/' | relative_url }}"
-        >
-          Read the technical deep dive →
-        </a>
-      </div>
+      <span class="card-arrow">
+        Explore project →
+      </span>
 
     </div>
-
-  </article>
-
+  </a>
 </section>
 
-
-<section class="wrap section deep-dive-section">
-
+<section class="wrap section">
   <div class="section-heading">
     <div>
-      <p class="eyebrow">TECHNICAL DEEP DIVE</p>
-      <h2>How to Design an SPI Master Controller in Verilog RTL</h2>
+      <p class="eyebrow">TECHNICAL WRITING</p>
+      <h2>Things I learned by building</h2>
+    </div>
+
+    <a href="{{ '/blog/' | relative_url }}">
+      All articles →
+    </a>
+  </div>
+
+  <div class="article-list">
+    {% for post in site.posts limit:3 %}
+    <a class="article-row" href="{{ post.url | relative_url }}">
+      <div>
+        <span class="article-date">
+          {{ post.date | date: "%d %b %Y" }}
+        </span>
+
+        <h3>{{ post.title }}</h3>
+
+        <p>{{ post.description }}</p>
+      </div>
+
+      <span class="row-arrow">↗</span>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="wrap section">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">FOCUS AREAS</p>
+      <h2>What I work on</h2>
     </div>
   </div>
 
-  <article class="deep-dive-card">
+  <div class="focus-grid">
 
-    <div class="deep-dive-number">
-      01
-    </div>
-
-    <div class="deep-dive-content">
-
-      <p class="article-date">
-        VLSI · RTL · SPI · APB · SYNTHESIS
-      </p>
-
-      <h3>
-        APB, Timing, Simulation and Synthesis
-      </h3>
-
+    <div class="focus-item">
+      <h3>RTL Design</h3>
       <p>
-        A detailed walkthrough of the controller, starting from SPI and APB
-        fundamentals and moving through modular RTL, simulation, timing,
-        synthesis, area, power and synthesis-debugging observations.
+        Synthesizable Verilog and digital architectures with an emphasis
+        on clean interfaces, modular design and hardware behavior.
       </p>
-
-      <div class="deep-dive-topics">
-        <span>SPI fundamentals</span>
-        <span>APB interface</span>
-        <span>Baud generator</span>
-        <span>Shift register</span>
-        <span>Verification</span>
-        <span>Synthesis</span>
-      </div>
-
-      <a
-        class="text-link"
-        href="{{ '/blog/spi-master-controller-verilog-rtl-apb/' | relative_url }}"
-      >
-        Read the complete article →
-      </a>
-
     </div>
 
-  </article>
+    <div class="focus-item">
+      <h3>Verification</h3>
+      <p>
+        Simulation, waveform analysis, RTL checks and debugging to understand
+        whether a design behaves as intended.
+      </p>
+    </div>
 
+    <div class="focus-item">
+      <h3>FPGA &amp; ASIC</h3>
+      <p>
+        Exploring how RTL maps into hardware through FPGA resources,
+        synthesis, timing, area, power and technology-mapped netlists.
+      </p>
+    </div>
+
+  </div>
 </section>
 
-
-<section class="wrap portfolio-note">
-
+<section class="wrap callout">
   <div>
-    <p class="eyebrow">ENGINEERING APPROACH</p>
+    <p class="eyebrow">ENGINEERING NOTE</p>
 
     <h2>
-      From RTL behavior to implementation results.
+      A waveform tells you it works.<br>
+      Synthesis tells you what it becomes.
     </h2>
 
     <p>
-      The work is documented across the RTL, simulation waveforms, design
-      checks and synthesis reports so that the path from logic description
-      to hardware implementation can be followed.
+      My projects are documented with the actual RTL, waveforms,
+      reports and implementation observations behind them.
     </p>
   </div>
 
+  <a class="button" href="{{ '/blog/' | relative_url }}">
+    Read technical notes
+  </a>
 </section>
