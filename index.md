@@ -1,7 +1,7 @@
 ---
 layout: default
 title: "Home"
-description: "Chhandak Roy — VLSI and RTL design engineer working on digital hardware, verification, FPGA architectures and ASIC implementation."
+description: "Chhandak Roy — VLSI and RTL design engineer, M.Tech. in VLSI and Nanoelectronics from IIT Guwahati, working on digital hardware, verification, FPGA architectures and ASIC implementation."
 ---
 
 <!-- =========================
@@ -13,16 +13,22 @@ description: "Chhandak Roy — VLSI and RTL design engineer working on digital h
   <div class="hero-copy">
 
     <p class="eyebrow">
-      VLSI • VERIFICATION • RTL • FPGA • ASIC
+      VLSI • RTL DESIGN • VERIFICATION • FPGA • ASIC
     </p>
 
     <h1>
-      Designing and Verifying Hardware.<br>
-      
+      Designing and<br>
+      Verifying Hardware.
     </h1>
 
+    <p class="hero-credential">
+      M.Tech. in VLSI and Nanoelectronics
+      <span>·</span>
+      IIT Guwahati
+    </p>
+
     <p class="hero-text">
-      I’m Chhandak Roy, a VLSI and RTL design and Verification engineer focused on
+      I’m Chhandak Roy, a VLSI and RTL design engineer focused on
       digital hardware, verification, FPGA architectures and ASIC implementation.
       I document the engineering decisions, debugging and implementation results
       behind the designs I build.
@@ -42,7 +48,6 @@ description: "Chhandak Roy — VLSI and RTL design engineer working on digital h
 
   </div>
 
-  
 </section>
 
 
@@ -74,7 +79,7 @@ description: "Chhandak Roy — VLSI and RTL design engineer working on digital h
     <img
       class="project-thumbnail"
       src="{{ '/assets/images/spi-master-controller/Architecture.png' | relative_url }}"
-      alt="Architecture of the APB-based SPI Master Controller"
+      alt="Block architecture of the APB-based SPI Master Controller"
       loading="lazy"
     >
 
@@ -173,7 +178,7 @@ description: "Chhandak Roy — VLSI and RTL design engineer working on digital h
 
 
 <!-- =========================
-     WHAT I WORK ON
+     FOCUS AREAS
      ========================= -->
 
 <section class="wrap section">
@@ -196,7 +201,7 @@ description: "Chhandak Roy — VLSI and RTL design engineer working on digital h
 
       <p>
         Synthesizable Verilog and digital architectures with an emphasis
-        on clean interfaces, modular design and hardware behavior.
+        on clean interfaces, modular design and predictable hardware behavior.
       </p>
 
     </div>

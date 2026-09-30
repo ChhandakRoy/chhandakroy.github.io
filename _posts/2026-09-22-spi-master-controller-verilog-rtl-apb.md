@@ -1354,24 +1354,3 @@ The project contains the RTL, simulation material, documentation, lint/synthesis
 
 ---
 
-## 24. What's Next?
-
-The next article in the series will move from a bus/peripheral controller to another fundamental RTL structure:
-
-**Designing an Efficient Synthesizable FIFO in Verilog**
-
-Later, the series will build toward:
-
-```text
-Synchronous FIFO
-    ↓
-Asynchronous FIFO / CDC
-    ↓
-AXI4-Lite → APB Bridge
-    ↓
-FPGA CNN Accelerators
-    ↓
-Latency / Throughput / BRAM / DSP Optimization
-```
-
-The larger goal is to keep connecting RTL architecture with verification, synthesis and implementation trade-offs.
