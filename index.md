@@ -17,12 +17,12 @@ description: "Chhandak Roy — VLSI and RTL design engineer working on digital h
     </p>
 
     <h1>
-      Building hardware.<br>
-      <span>Understanding what happens after the RTL.</span>
+      Designing and Verifying Hardware.<br>
+      
     </h1>
 
     <p class="hero-text">
-      I’m Chhandak Roy, a VLSI and RTL design engineer focused on
+      I’m Chhandak Roy, a VLSI and RTL design and Verification engineer focused on
       digital hardware, verification, FPGA architectures and ASIC implementation.
       I document the engineering decisions, debugging and implementation results
       behind the designs I build.
@@ -42,29 +42,7 @@ description: "Chhandak Roy — VLSI and RTL design engineer working on digital h
 
   </div>
 
-  <div class="hero-card">
-
-    <div class="terminal-bar">
-      <i></i>
-      <i></i>
-      <i></i>
-      <span>design_flow</span>
-    </div>
-
-    <pre><code>RTL
- ↓
-SIMULATION
- ↓
-LINT
- ↓
-SYNTHESIS
- ↓
-TIMING / AREA / POWER
- ↓
-NETLIST</code></pre>
-
-  </div>
-
+  
 </section>
 
 
