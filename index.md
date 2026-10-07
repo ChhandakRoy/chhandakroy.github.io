@@ -43,51 +43,45 @@ description: "Chhandak Roy — VLSI and RTL design engineer working on digital h
 <section class="wrap section">
   <div class="section-heading">
     <div>
-      <p class="eyebrow">FEATURED PROJECT</p>
-      <h2>APB-Based SPI Master Controller</h2>
+      <p class="eyebrow">FEATURED TECHNICAL WRITING</p>
+      <h2>From RTL to Implementation</h2>
     </div>
 
-    <a href="{{ '/projects/' | relative_url }}">
-      Projects &amp; Writing →
+    <a href="{{ '/blog/' | relative_url }}">
+      All articles →
     </a>
   </div>
 
   <a
     class="project-card featured"
-    href="{{ '/projects/apb-spi-master-controller/' | relative_url }}"
+    href="{{ '/blog/spi-master-controller-verilog-rtl-apb/' | relative_url }}"
   >
-    <img
-      class="project-thumbnail"
-      src="{{ '/assets/images/spi-master-controller/Architecture.png' | relative_url }}"
-      alt="Architecture of the APB-based SPI Master Controller"
-      loading="lazy"
-    >
-
     <div class="project-card-body">
 
       <div class="card-label">
-        DIGITAL DESIGN · VERILOG RTL
+        VERILOG RTL · APB · SPI
       </div>
 
-      <h3>APB-Based SPI Master Controller</h3>
+      <h3>
+        How to Design an SPI Master Controller in Verilog RTL
+      </h3>
 
       <p>
-        A parameterized APB-controlled SPI master implemented in synthesizable
-        Verilog RTL and taken through simulation, RTL design checks, synthesis,
-        timing, area and power analysis.
+        A complete technical walkthrough covering SPI fundamentals, APB
+        integration, RTL design, simulation, lint, synthesis, timing,
+        area and power analysis.
       </p>
 
       <div class="tags">
         <span>Verilog</span>
         <span>APB</span>
         <span>SPI</span>
-        <span>Vivado</span>
-        <span>SpyGlass</span>
-        <span>Design Compiler</span>
+        <span>Verification</span>
+        <span>Synthesis</span>
       </div>
 
       <span class="card-arrow">
-        Explore project →
+        Read the technical deep dive →
       </span>
 
     </div>
