@@ -56,6 +56,12 @@ description: "Chhandak Roy — VLSI and RTL design engineer working on digital h
     class="project-card featured"
     href="{{ '/blog/spi-master-controller-verilog-rtl-apb/' | relative_url }}"
   >
+  <img
+    class="project-thumbnail"
+    src="{{ '/assets/images/spi-master-controller/Architecture.png' | relative_url }}"
+    alt="Architecture of the APB-based SPI Master Controller"
+    loading="lazy"
+  >
     <div class="project-card-body">
 
       <div class="card-label">
