@@ -851,7 +851,7 @@ pre {
    ========================================================= */
 
 .article {
-  width: min(56vw, 1040px);
+  width: min(60vw, 1100px);
   margin-left: auto;
   margin-right: auto;
 
